@@ -67,7 +67,7 @@ const fuzzySort: SortingFn<any> = (rowA, rowB, columnId) => {
   return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir;
 };
 
-export const TableComponent = () => {
+export const TableComponent = ({ data: blob }) => {
   const rerender = React.useReducer(() => ({}), {})[1];
 
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -115,49 +115,6 @@ export const TableComponent = () => {
     ],
     []
   );
-
-  const blob = [
-    {
-      id: 4001126,
-      product: "Aguacate Hass",
-      type: "Nacional",
-      size: "Mediano",
-      unit: "kg",
-      price: 1980,
-    },
-    {
-      id: 4001127,
-      product: "Aguacate Hass",
-      type: "Nacional",
-      size: "Grande",
-      unit: "kg",
-      price: 2210,
-    },
-    {
-      id: 4001128,
-      product: "Aguacate Hass",
-      type: "Importado",
-      size: "Pequeño",
-      unit: "kg",
-      price: 1700,
-    },
-    {
-      id: 4001129,
-      product: "Aguacate Hass",
-      type: "Nacional",
-      size: "Super Extra",
-      unit: "kg",
-      price: 2890,
-    },
-    {
-      id: 4001130,
-      product: "Aguacate Hass",
-      type: "Importado",
-      size: "Supremo",
-      unit: "kg",
-      price: 3500,
-    },
-  ];
 
   const [data, setData] = React.useState<Person[]>(() => blob);
   const refreshData = () => setData((_old) => blob);
